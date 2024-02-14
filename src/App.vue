@@ -6,16 +6,25 @@ import AppFooter from './components/AppFooter.vue';
 export default {
   data(){
     return{
-      
-    }
-  }
-};
 
-components: { AppHeader, AppMain, AppFooter}
+    }
+  },
+  
+  components: { AppHeader, AppMain, AppFooter }
+}
+
+
+
 </script>
 
 <template>
-  <h1>ciaoooo</h1>
+
+  <AppHeader />
+
+  <AppMain />
+
+  <AppFooter />
+
 </template>
 
 <style >
