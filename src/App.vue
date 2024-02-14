@@ -9,7 +9,9 @@ export default {
 
     }
   },
-
+  created() {
+   
+  },
   components: { AppHeader, AppMain, AppFooter }
 }
 
