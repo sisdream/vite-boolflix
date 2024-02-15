@@ -17,13 +17,14 @@ export default{
           store.movies = response.data.results; 
         })
     }
-  }
+  },
+
 }
 
 </script>
 
 <template>
-  <h1>ciaoooo</h1>
+  <h1>Ricerca Film</h1>
   <input class="form-control" type="search" placeholder="Search" v-model="title"/>
   <button class="btn btn-danger" @click="fetch()">Search</button>
 </template>
