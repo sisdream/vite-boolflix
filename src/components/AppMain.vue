@@ -13,27 +13,44 @@ export default{
             if(langCode == 'en')return new URL('/bandiera-eng.jpg', import.meta.url).href;
             if(langCode == 'es')return new URL('/bandiera-spn.jpg', import.meta.url).href;
             if(langCode == 'fr')return new URL('/bandiera-fra.jpg', import.meta.url).href;
-            return '/bandiera-vuota.jpg';
         }
     }
 }
 </script>
 
 <template>
-    <ul v-if="store.movies.length > 0">
-        <li v-for="movie in store.movies">
-          <h2>Titolo: {{ movie.title }}</h2>
-          <h5>Titolo originale: {{ movie.original_title }}</h5>
-          <span class="flag">Lingua: 
-            <img :src="getFlag(movie.original_language)" alt="">
-            </span>
-          <div>Voto: {{ movie.vote_average }} / 10</div>
-          <div>immagine:<img :src="movie.poster_path" alt=""></div>
-        </li>
-      </ul>
+    <main>
+        <ul v-if="store.movies.length > 0">
+            <li v-for="movie in store.movies">
+              <h2>Titolo: {{ movie.title }}</h2>
+              <h5>Titolo originale: {{ movie.original_title }}</h5>
+              <span class="flag">Lingua: 
+                <img :src="getFlag(movie.original_language)" :alt="movie.original_language">
+                </span>
+              <div>Voto: {{ movie.vote_average }} / 10</div>
+              <div>immagine:<img :src="movie.poster_path" alt=""></div>
+            </li>
+        </ul>
+    </main>
 </template>
 
 <style lang="scss">
+    main{
+        padding: 110px 0;
+    }
+
+    ul{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+
+
+        li{
+            border: 1px solid red;
+            width: calc(100% / 3 - 50px);
+        }
+    }
+
     .flag{
         display: flex;
         gap: 1rem;
