@@ -1,5 +1,6 @@
 <script>
 import { store } from './store';
+import AppSerie from './AppSerie.vue';
 
 export default{
     data(){
@@ -7,6 +8,7 @@ export default{
             store,
         }
     },
+    components: { AppSerie },
     methods:{
         getFlag(langCode){
             if(langCode == 'it')return new URL('/bandiera-ita.jpg', import.meta.url).href; 
@@ -20,6 +22,7 @@ export default{
 
 <template>
     <main>
+        <h1>Film</h1>
         <ul v-if="store.movies.length > 0">
             <li v-for="movie in store.movies">
               <h2>Titolo: {{ movie.title }}</h2>
@@ -31,12 +34,17 @@ export default{
               <div>immagine:<img :src="movie.poster_path" alt=""></div>
             </li>
         </ul>
+        <AppSerie />
     </main>
 </template>
 
 <style lang="scss">
     main{
         padding: 110px 0;
+    }
+
+    h1{
+        text-align: center;
     }
 
     ul{

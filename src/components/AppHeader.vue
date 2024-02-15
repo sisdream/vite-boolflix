@@ -11,16 +11,15 @@ export default{
   },
   methods:{
     fetch() {
-      axios.get(`${store.baseUrl}${store.apiKey}&query=${this.title}`)
+      axios.get(`${store.baseUrl}movie?${store.apiKey}&query=${this.title}`)
         .then(function(response){
-          console.log(response.data.results);
           store.movies = response.data.results; 
-        })
+        }
+      )
     }
   },
 
 }
-
 </script>
 
 <template>
@@ -31,11 +30,6 @@ export default{
       <button class="btn btn-danger" @click="fetch()">Cerca</button>
     </section>
   </header>
-
-
-
-
-
 </template>
 
 <style lang="scss">
@@ -47,7 +41,7 @@ export default{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     section{

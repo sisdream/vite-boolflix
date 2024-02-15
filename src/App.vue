@@ -11,7 +11,8 @@ export default {
     return{
       store,
       title: "",
-      string: `${store.searchStr}+${this.title}+${store.apiKey}`,
+      string: `${store.searchStr}+ "movie?" +${this.title}+${store.apiKey}`,
+      stringTv: `${store.baseUrl}+ "tv?" +${store.apiKey}+ ${this.title}`,
     }
   },
   created() {
