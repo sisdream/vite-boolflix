@@ -20,16 +20,23 @@ body{
     text-align: center;
     transition: transform .8s;
     transform-style: preserve-3d;
-
 }
 
 .flip-card{
     height: 300px;
-    perspective: 1000px;
+}
+
+.flip-card,
+.flip-card-inner,
+.flip-card-back{
+    position: relative;
+    overflow: auto;
+    padding: 1rem 0.4rem 0.4rem;
+    color: #fff;
+    background-color: #000;
 }
 
 .poster{
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 70%;
 }
 

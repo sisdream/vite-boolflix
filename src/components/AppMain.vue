@@ -32,18 +32,18 @@ export default{
                             <img v-else src="/default-poster.jpg" alt="nessun poster trovato" class="poster">
                         </div>
                     </div>
-<!-- 
-                    <h2>Titolo: {{ movie.title }}</h2>
-                    <h5>Titolo originale: {{ movie.original_title }}</h5>
-                    <span class="flag">Lingua: 
-                        <img :src="getFlag(movie.original_language)" :alt="movie.original_language">
+                    <div class="flip-card-back">
+                        <h4 class="p-0">Titolo: {{ movie.title }} </h4>
+                        <h6 class="p-0">Titolo originale: {{ movie.original_title }}</h6>
+                        <span class="flag p-0">Lingua: 
+                            <img :src="getFlag(movie.original_language)" :alt="movie.original_language">
                         </span>
-                        <div>Voto: {{ Math.ceil(movie.vote_average / 2) }} / 5
-                        <div>
-                            <i v-for="star in 5" :class="(star <= Math.ceil(movie.vote_average / 2)) ? 'fa-solid fa-star' : 'fa-regular fa-star'"></i>
+                        <div class="p-0">Voto: {{ Math.ceil(movie.vote_average / 2) }} / 5
+                            <div>
+                                <i v-for="star in 5" :class="(star <= Math.ceil(movie.vote_average / 2)) ? 'fa-solid fa-star' : 'fa-regular fa-star'"></i>
+                            </div>
                         </div>
-                    </div> -->
-                    
+                    </div>
                 </div>
             </div>
         </div>

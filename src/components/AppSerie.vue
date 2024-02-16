@@ -30,18 +30,18 @@ export default{
                     <img v-else src="/default-poster.jpg" alt="nessun poster trovato" class="poster">
                     </div>
                 </div>
-                <!-- <h2>Titolo: {{ serie.name}}</h2>
-                <h5>Titolo originale: {{ serie.original_name }}</h5>
-                <span class="flag">Lingua: 
-                    <img :src="this.getFlag(serie.original_language)" :alt="serie.original_language">
+                <div class="flip-card-back">
+                    <h4>Titolo: {{ serie.name}}</h4>
+                    <h6>Titolo originale: {{ serie.original_name }}</h6>
+                    <span class="flag">Lingua: 
+                        <img :src="this.getFlag(serie.original_language)" :alt="serie.original_language">
                     </span>
                     <div>Voto: {{  Math.ceil(serie.vote_average / 2) }} / 5
-                    <div>
                         <div>
                             <i v-for="star in 5" :class="(star <= Math.ceil(serie.vote_average / 2)) ? 'fa-solid fa-star' : 'fa-regular fa-star'"></i>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
     </div>
