@@ -31,7 +31,7 @@ export default{
                 <img :src="getFlag(movie.original_language)" :alt="movie.original_language">
                 </span>
               <div>Voto: {{ movie.vote_average }} / 10</div>
-              <div>immagine:<img :src="movie.poster_path" alt=""></div>
+              <div>immagine:<img class="poster" :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`" alt=""></div>
             </li>
         </ul>
         <AppSerie />
