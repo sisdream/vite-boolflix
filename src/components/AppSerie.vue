@@ -29,19 +29,19 @@ export default{
             <span class="flag">Lingua: 
                 <img :src="this.getFlag(serie.original_language)" :alt="serie.original_language">
                 </span>
-            <div>Voto: {{ serie.vote_average }} / 10</div>
+            <div>Voto: {{  Math.ceil(serie.vote_average / 2) }} / 5
+                <div>
+                    <div>
+                        <i v-for="star in 5" :class="(star <= Math.ceil(serie.vote_average / 2)) ? 'fa-solid fa-star' : 'fa-regular fa-star'"></i>
+                    </div>
+                </div>
+            </div>
             <div>
                 <img v-if="serie.poster_path" class="poster" :src="`https://image.tmdb.org/t/p/w342/${serie.poster_path}`" :alt="original_name">
                 <img v-else src="/default-poster.jpg" alt="nessun poster trovato" class="poster">
             </div>
         </li>
     </ul>
-
-
-    <div>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-    </div>
 </template>
 
 <style>

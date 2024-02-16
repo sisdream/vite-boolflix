@@ -30,7 +30,11 @@ export default{
                 <span class="flag">Lingua: 
                     <img :src="getFlag(movie.original_language)" :alt="movie.original_language">
                     </span>
-                <div>Voto: {{ movie.vote_average }} / 10</div>
+                <div>Voto: {{ Math.ceil(movie.vote_average / 2) }} / 5
+                    <div>
+                        <i v-for="star in 5" :class="(star <= Math.ceil(movie.vote_average / 2)) ? 'fa-solid fa-star' : 'fa-regular fa-star'"></i>
+                    </div>
+                </div>
                 <div>
                     <img v-if="movie.poster_path" class="poster" :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`" :alt="movie.title">
                     <img v-else src="/default-poster.jpg" alt="nessun poster trovato" class="poster">
