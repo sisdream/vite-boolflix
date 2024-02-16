@@ -25,13 +25,16 @@ export default{
         <h1>Film</h1>
         <ul v-if="store.movies.length > 0">
             <li v-for="movie in store.movies">
-              <h2>Titolo: {{ movie.title }}</h2>
-              <h5>Titolo originale: {{ movie.original_title }}</h5>
-              <span class="flag">Lingua: 
-                <img :src="getFlag(movie.original_language)" :alt="movie.original_language">
-                </span>
-              <div>Voto: {{ movie.vote_average }} / 10</div>
-              <div>immagine:<img class="poster" :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`" alt=""></div>
+                <h2>Titolo: {{ movie.title }}</h2>
+                <h5>Titolo originale: {{ movie.original_title }}</h5>
+                <span class="flag">Lingua: 
+                    <img :src="getFlag(movie.original_language)" :alt="movie.original_language">
+                    </span>
+                <div>Voto: {{ movie.vote_average }} / 10</div>
+                <div>
+                    <img v-if="movie.poster_path" class="poster" :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`" :alt="movie.title">
+                    <img v-else src="/default-poster.jpg" alt="nessun poster trovato" class="poster">
+                </div>
             </li>
         </ul>
         <AppSerie />

@@ -10,16 +10,26 @@ export default{
     }
   },
   methods:{
-    fetch() {
+    fetchAllData() {
+      this.fetchMovie();
+      this.fetchTv();
+    },
+    fetchMovie() {
       axios.get(`${store.baseUrl}movie?${store.apiKey}&query=${this.title}`)
         .then(function(response){
           store.movies = response.data.results; 
-        }
-      )
-    }
+        })
+    },
+    fetchTv() {
+      axios.get(`${store.baseUrl}tv?${store.apiKey}&query=${this.title}`)
+        .then(function(res){
+          store.series = res.data.results; 
+      })
+    },
   },
 
 }
+
 </script>
 
 <template>
@@ -27,7 +37,7 @@ export default{
     <img src="/logo.png" alt="">
     <section>
       <input class="form-control" type="search" placeholder="Search" v-model="title"/>
-      <button class="btn btn-danger" @click="fetch()">Cerca</button>
+      <button class="btn btn-danger" @click="fetchAllData()">Cerca</button>
     </section>
   </header>
 </template>
