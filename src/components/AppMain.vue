@@ -23,24 +23,30 @@ export default{
 <template>
     <main>
         <h1>Film</h1>
-        <ul v-if="store.movies.length > 0">
-            <li v-for="movie in store.movies">
-                <h2>Titolo: {{ movie.title }}</h2>
-                <h5>Titolo originale: {{ movie.original_title }}</h5>
-                <span class="flag">Lingua: 
-                    <img :src="getFlag(movie.original_language)" :alt="movie.original_language">
-                    </span>
-                <div>Voto: {{ Math.ceil(movie.vote_average / 2) }} / 5
-                    <div>
-                        <i v-for="star in 5" :class="(star <= Math.ceil(movie.vote_average / 2)) ? 'fa-solid fa-star' : 'fa-regular fa-star'"></i>
+        <div class="container">
+            <div v-if="store.movies.length > 0" class="row row-cols-xl-5 g-5">
+                <div v-for="movie in store.movies" class="flip-card col">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img v-if="movie.poster_path" class="poster" :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`" :alt="movie.title">
+                            <img v-else src="/default-poster.jpg" alt="nessun poster trovato" class="poster">
+                        </div>
                     </div>
+<!-- 
+                    <h2>Titolo: {{ movie.title }}</h2>
+                    <h5>Titolo originale: {{ movie.original_title }}</h5>
+                    <span class="flag">Lingua: 
+                        <img :src="getFlag(movie.original_language)" :alt="movie.original_language">
+                        </span>
+                        <div>Voto: {{ Math.ceil(movie.vote_average / 2) }} / 5
+                        <div>
+                            <i v-for="star in 5" :class="(star <= Math.ceil(movie.vote_average / 2)) ? 'fa-solid fa-star' : 'fa-regular fa-star'"></i>
+                        </div>
+                    </div> -->
+                    
                 </div>
-                <div>
-                    <img v-if="movie.poster_path" class="poster" :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`" :alt="movie.title">
-                    <img v-else src="/default-poster.jpg" alt="nessun poster trovato" class="poster">
-                </div>
-            </li>
-        </ul>
+            </div>
+        </div>
         <AppSerie />
     </main>
 </template>
@@ -52,18 +58,6 @@ export default{
 
     h1{
         text-align: center;
-    }
-
-    ul{
-        display: flex;
-        flex-wrap: wrap;
-        gap: 3rem;
-
-
-        li{
-            border: 1px solid red;
-            width: calc(100% / 3 - 50px);
-        }
     }
 
     .flag{

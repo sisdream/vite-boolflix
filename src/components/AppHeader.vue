@@ -34,7 +34,7 @@ export default{
 
 <template>
   <header>
-    <img src="/logo.png" alt="">
+    <img src="/logo.png" alt="logo">
     <section>
       <input class="form-control" type="search" placeholder="Search" v-model="title"/>
       <button class="btn btn-danger" @click="fetchAllData()">Cerca</button>
@@ -54,11 +54,13 @@ export default{
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 3;
+
+
     section{
       display: flex;
       gap: 1rem;
     }
-
   }
 
   button{
