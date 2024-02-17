@@ -13,30 +13,3 @@ body{
     position: relative;
 }
 
-.flip-card-inner{
-    width: 100%;
-    height: 100%;
-    position: relative;
-    text-align: center;
-    transition: transform .8s;
-    transform-style: preserve-3d;
-}
-
-.flip-card{
-    height: 300px;
-}
-
-.flip-card,
-.flip-card-inner,
-.flip-card-back{
-    position: relative;
-    overflow: auto;
-    padding: 1rem 0.4rem 0.4rem;
-    color: #fff;
-    background-color: #000;
-}
-
-.poster{
-    max-width: 70%;
-}
-

@@ -1,69 +1,48 @@
 <script>
-import { store } from './store';
-import AppSerie from './AppSerie.vue';
+import { store } from "./store";
+import AppCard from "./AppCard.vue";
 
-export default{
-    data(){
-        return{
+export default {
+    data() {
+        return {
             store,
-        }
+        };
     },
-    components: { AppSerie },
-    methods:{
-        getFlag(langCode){
-            if(langCode == 'it')return new URL('/bandiera-ita.jpg', import.meta.url).href; 
-            if(langCode == 'en')return new URL('/bandiera-eng.jpg', import.meta.url).href;
-            if(langCode == 'es')return new URL('/bandiera-spn.jpg', import.meta.url).href;
-            if(langCode == 'fr')return new URL('/bandiera-fra.jpg', import.meta.url).href;
-        }
-    }
-}
+    components: { AppCard },
+};
 </script>
 
 <template>
     <main>
-        <h1>Film</h1>
+        <h2>Film</h2>
         <div class="container">
             <div v-if="store.movies.length > 0" class="row row-cols-xl-5 g-5">
-                <div v-for="movie in store.movies" class="flip-card col">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img v-if="movie.poster_path" class="poster" :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`" :alt="movie.title">
-                            <img v-else src="/default-poster.jpg" alt="nessun poster trovato" class="poster">
-                        </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <h4 class="p-0">Titolo: {{ movie.title }} </h4>
-                        <h6 class="p-0">Titolo originale: {{ movie.original_title }}</h6>
-                        <span class="flag p-0">Lingua: 
-                            <img :src="getFlag(movie.original_language)" :alt="movie.original_language">
-                        </span>
-                        <div class="p-0">Voto: {{ Math.ceil(movie.vote_average / 2) }} / 5
-                            <div>
-                                <i v-for="star in 5" :class="(star <= Math.ceil(movie.vote_average / 2)) ? 'fa-solid fa-star' : 'fa-regular fa-star'"></i>
-                            </div>
-                        </div>
-                    </div>
+                <div v-for="movie in store.movies" class="col">
+                    <AppCard :isFilm="true" :data="movie" />
                 </div>
             </div>
         </div>
-        <AppSerie />
+
+        <h2 class="serie">Serie</h2>
+        <div class="container">
+            <div v-if="store.series.length > 0" class="row row-cols-xl-5 g-5">
+                <div v-for="serie in store.series" class="col">
+                    <AppCard :isFilm="false" :data="serie" />
+                </div>
+            </div>
+        </div>
     </main>
 </template>
 
 <style lang="scss">
-    main{
-        padding: 110px 0;
-    }
+main {
+    padding: 110px 0;
+}
 
-    h1{
-        text-align: center;
-    }
-
-    .flag{
-        display: flex;
-        gap: 1rem;
-        margin: 5px;
-        height: 25px;
-    }
+h2 {
+    text-align: center;
+}
+.serie{
+    margin-top: 6rem;
+}
 </style>

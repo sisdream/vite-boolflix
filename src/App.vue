@@ -4,14 +4,11 @@ import { store } from "./components/store.js";
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 
-
 export default {
   data(){
     return{
       store,
       title: "",
-      string: `${store.searchStr}+ "movie?" +${this.title}+${store.apiKey}`,
-      stringTv: `${store.baseUrl}+ "tv?" +${store.apiKey}+${this.title}`,
     }
   },
   created() {

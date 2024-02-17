@@ -36,7 +36,7 @@ export default{
   <header>
     <img src="/logo.png" alt="logo">
     <section>
-      <input class="form-control" type="search" placeholder="Search" v-model="title"/>
+      <input class="form-control" type="search" placeholder="Search" @keyup.enter="fetchAllData()" v-model="title"/>
       <button class="btn btn-danger" @click="fetchAllData()">Cerca</button>
     </section>
   </header>
