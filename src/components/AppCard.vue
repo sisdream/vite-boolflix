@@ -30,6 +30,7 @@
                         ></i>
                     </div>
                 </div>
+                <p>Trama: {{ data.overview }} </p>
             </div>
         </div>
     </div>
